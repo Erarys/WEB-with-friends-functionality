@@ -44,6 +44,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'friendsystem.urls'
+AUTH_USER_MODEL = 'accounts.User'
 
 TEMPLATES = [
     {
@@ -98,19 +99,22 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Almaty'
 
 USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
+MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/var/www/friendsystem/media'
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+# STATIC_ROOT = '/var/www/friendsystem/static'
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
