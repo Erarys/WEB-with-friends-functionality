@@ -1,0 +1,16 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    Данные пользователя
+{% endblock %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+        {{ user.first_name }}
+        {{ user.last_name }}
+        <img class="medicines_img" src="{{ user.avatar.url }}">
+    {% else %}
+        <h1>Вы не авторизованы</h1>
+    {% endif %}
+
+{% endblock %}

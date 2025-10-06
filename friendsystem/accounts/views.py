@@ -1,13 +1,17 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, TemplateView, UpdateView
+from django.views.generic import CreateView, TemplateView, UpdateView, View
 
 from accounts.forms import EmailUserCreationForm
+from accounts.models import User
 
 
-def index(request):
-    return render(request, 'accounts/base.html')
+class HomePageView(TemplateView):
+    def get(self, request, *args, **kwargs):
+
+        return render(request, 'accounts/home-page.html')
+
 
 
 class RegisterView(CreateView):
@@ -29,3 +33,12 @@ class RegisterView(CreateView):
         login(request=self.request, user=user)
 
         return response
+
+class UpdatePersonalPage(UpdateView):
+    template_name = "accounts/update_profile.html"
+    model = User
+    fields = "first_name", "last_name", "bio", "avatar"
+    success_url = reverse_lazy("accounts:profile")
+
+    def get_object(self, queryset=None):
+        return self.request.user

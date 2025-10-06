@@ -1,0 +1,20 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}
+    Обновить личные данные
+{% endblock %}
+
+{% block components %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/css/product_list_style.css' %}">
+{% endblock %}
+
+{% block body %}
+    <a href="{% url 'accounts:profile' %}"><h1>GreenApple</h1></a>
+    <form method="post" enctype="multipart/form-data">
+        <h2>Обновить личные данные пользователя</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-lg">Сохранить</button>
+    </form>
+{% endblock %}
